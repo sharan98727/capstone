@@ -6,24 +6,27 @@ import Search from "./searchbar";
 class Navigation extends React.Component {
   render() {
     return (
-      <div className="navbar">
-        <ul className="navitems">
-          <li>
-            <Link to="/">Home</Link>
-          </li>
-          <li>
-            <Link to="/about">
+    <div>
+      <nav className="navbar-expand-sm bg-dark navbar-dark text-white">
+        <form class="form-inline">
+         <h3><span class="badge mx-2 badge-warning"><b>COMPANY</b></span></h3> 
+         <Link className="navbar-brand ml-2" to="/">
+           Company
+         </Link>
+         <Link to="/about">
               <Search />
-            </Link>
-          </li>
-          <li>
-            <Link to="/SignIn">SignIn</Link>
-          </li>
-          <li>
-            <Link to="/Login">Login</Link>
-          </li>
-        </ul>
-      </div>
+         </Link>
+         
+         <Link className="navbar-brand ml-2" to="/SignIn">
+           SignUp
+          </Link>
+         <Link className="navbar-brand ml-2" to="/Login">
+           Login
+          </Link>
+          
+        </form>
+      </nav>
+    </div>
     );
   }
 }
