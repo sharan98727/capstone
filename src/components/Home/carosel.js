@@ -28,7 +28,7 @@ class Carosel extends React.Component {
             return (
               <Carousel.Item >
                 
-                <img  src={item.urls.raw} alt="First slide" height="450px" width="100%"  />
+                <img  src={item.urls.raw} alt="First slide" height="300px" width="100%"  />
               </Carousel.Item>
             );
           })}
