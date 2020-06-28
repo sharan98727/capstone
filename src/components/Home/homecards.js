@@ -30,10 +30,10 @@ class Homecards extends React.Component {
         
           <Card style={{ width: '15rem' }} >          
            <Card.Img variant="top" src={item.urls.full} width="400px" height="150px" />
-           <Card.Body>
+           <Card.Body >
              <Card.Title>House Maids</Card.Title>
-             <Button variant="primary">click</Button>
-           </Card.Body>          
+           </Card.Body> 
+           <button onClick = {this.handleclick}>click</button>         
           </Card>
           {/*<img src={item.urls.regular} alt="" height="250px" width="250px" />*/}
          
@@ -42,7 +42,10 @@ class Homecards extends React.Component {
       })
       return (
       <CardDeck className="card-display">
+       
         {items}
+        
+        
       </CardDeck>
       );
     
