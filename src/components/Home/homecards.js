@@ -1,4 +1,6 @@
 import React from "react";
+import { Card,Button, CardDeck} from "react-bootstrap";
+import "./home.css";
 
 class Homecards extends React.Component {
   state = {
@@ -21,13 +23,29 @@ class Homecards extends React.Component {
   }
 
   render() {
-    return this.state.images.slice(0, this.state.cardnumber).map(item => {
-      return (
-        <div>
-          <img src={item.urls.regular} alt="" height="250px" width="250px" />
+    
+    const items = this.state.images.slice(0, this.state.cardnumber).map(item => {
+      return(
+      <div>
+        
+          <Card style={{ width: '15rem' }} >          
+           <Card.Img variant="top" src={item.urls.full} width="400px" height="150px" />
+           <Card.Body>
+             <Card.Title>House Maids</Card.Title>
+             <Button variant="primary">click</Button>
+           </Card.Body>          
+          </Card>
+          {/*<img src={item.urls.regular} alt="" height="250px" width="250px" />*/}
+         
         </div>
+      )
+      })
+      return (
+      <CardDeck className="card-display">
+        {items}
+      </CardDeck>
       );
-    });
+    
   }
 }
 
