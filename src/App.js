@@ -5,6 +5,7 @@ import Navigation from "./components/navigation/navigationbar";
 import Signin from "./components/Signin/signin";
 import Login from "./components/login/login";
 import Home from "./components/Home/home";
+import Appliance from "./components/appliances/appliances";
 
 export default function App() {
   return (
@@ -16,6 +17,9 @@ export default function App() {
         </Route>
         <Route path="/Login">
           <Login />
+        </Route>
+        <Route path="/appliances">
+          <Appliance />
         </Route>
         <Route path="/">
           <Home />

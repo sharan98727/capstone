@@ -15,15 +15,22 @@ class Navigation extends React.Component {
          </Link>
          <Link to="/about">
               <Search />
-         </Link>
-         
-         <Link className="navbar-brand ml-2" to="/SignIn">
+         </Link> 
+          <Link className="navbar-brand ml-2" to="/housemaid">
+           House-Maid
+          </Link>
+          <Link className="navbar-brand ml-2" to="/appliances">
+           Appliances
+          </Link>
+          <Link className="navbar-brand ml-2" to="/SignIn">
            SignUp
           </Link>
          <Link className="navbar-brand ml-2" to="/Login">
            Login
           </Link>
-          
+         
+
+         
         </form>
       </nav>
     </div>
