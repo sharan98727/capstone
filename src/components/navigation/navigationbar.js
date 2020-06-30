@@ -8,8 +8,8 @@ class Navigation extends React.Component {
     return (
     <div>
       <nav className="navbar-expand-sm bg-dark navbar-dark text-white">
-        <form class="form-inline">
-         <h3><span class="badge mx-2 badge-warning"><b>COMPANY</b></span></h3> 
+        <form className="form-inline">
+         <h3><span className="badge mx-2 badge-warning"><b>COMPANY</b></span></h3> 
          <Link className="navbar-brand ml-2" to="/">
            Company
          </Link>

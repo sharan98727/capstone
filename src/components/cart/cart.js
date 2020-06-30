@@ -7,7 +7,7 @@ class Cart extends React.Component {
 
 
     render(){
-        console.log(this.props.cartitems)
+        console.log(this.props.cartitems);
         const Cartitem = this.props.cartitems.map(item => {
         return(
             <Card style={{ width: '18rem' }}>

@@ -26,7 +26,7 @@ class Carosel extends React.Component {
           {this.state.quotesdata.map((item, i) => {
             console.log(item.urls.raw);
             return (
-              <Carousel.Item >
+              <Carousel.Item key={item.id} >
                 
                 <img  src={item.urls.raw} alt="First slide" height="300px" width="100%"  />
               </Carousel.Item>

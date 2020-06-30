@@ -47,7 +47,7 @@ class Appliance extends React.Component {
         const items = this.state.appliancecards.slice(0, 4).map(item => {
             return (
             
-              <Card style={{ width: '18rem' }}>
+              <Card style={{ width: '18rem' }} key={item.id}>
                    <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />
                    <ListGroup className="list-group-flush">
                       <ListGroupItem>{item.alt_description}</ListGroupItem>

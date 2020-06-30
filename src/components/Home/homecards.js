@@ -44,9 +44,9 @@ class Homecards extends React.Component {
     
     const items = this.state.images.slice(0, this.state.cardnumber).map(item => {
       return(
-      <div>
+      <div key={item.id}>
         
-          <Card style={{ width: '18rem',height:'15rem' }} >          
+          <Card style={{ width: '18rem',height:'15rem' }} key={item.id}>          
            <Card.Img variant="top" src={item.urls.full} width="400px" height="200px" />
            <Card.Body style={{height:'3rem',textAlign:'center',backgroundColor:'grey',color:'white',justifyContent:'center'}} >
              <Card.Title>House Maids</Card.Title>
