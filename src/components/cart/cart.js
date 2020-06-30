@@ -1,34 +1,35 @@
 import React from "react";
 import { connect } from "react-redux";
-import { CardDeck,Card, ListGroup, ListGroupItem } from "react-bootstrap";
+import { Card, CardColumns,ListGroup,ListGroupItem } from "react-bootstrap";
 
 class Cart extends React.Component {
 
 
 
     render(){
-
-        const cartitem = this.state.cartdata.map(item => {
+        console.log(this.props.cartitems)
+        const Cartitem = this.props.cartitems.map(item => {
         return(
             <Card style={{ width: '18rem' }}>
-                   <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />
+
+                   <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />  
                    <ListGroup className="list-group-flush">
                       <ListGroupItem>{item.alt_description}</ListGroupItem>
                       <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
                       <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
-                      
-                    </ListGroup>
+                      <button onClick = {()=>{this.handleclick({item})}} >Proceed to payment</button>
+                    </ListGroup>               
                     
-              </Card>
+            </Card>
             
         )
 
         })
 
         return(
-            <CardDeck>
-                  {cartitem}
-            </CardDeck>
+            <CardColumns style={{margin:"20px"}}>
+                  {Cartitem}
+            </CardColumns>
 
            
         )
@@ -38,8 +39,9 @@ class Cart extends React.Component {
 
 
 const mapStateToProps = state =>{
+    console.log(state);
     return{
-        cartdata: state.cartdata,
+        cartitems: state.cartdata,
     };
 };
 

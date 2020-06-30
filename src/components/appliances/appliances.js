@@ -53,7 +53,7 @@ class Appliance extends React.Component {
                       <ListGroupItem>{item.alt_description}</ListGroupItem>
                       <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
                       <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
-                      <button onClick = {()=>{this.handleclick(item)}} >Add to Cart</button>
+                      <button onClick = {()=>{this.handleclick({item})}} >Add to Cart</button>
                     </ListGroup>
                     
               </Card>

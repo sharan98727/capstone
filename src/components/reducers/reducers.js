@@ -1,6 +1,6 @@
 
 const initstate = {
-    cartdata:[],
+    cartdata: [],
 }
 
 const cartreducer = (state=initstate,action) => {
