@@ -1,6 +1,7 @@
 
 const initstate = {
     cartdata: [],
+    searchvalue:''
 }
 
 const cartreducer = (state=initstate,action) => {
@@ -13,6 +14,14 @@ const cartreducer = (state=initstate,action) => {
                 ...state,
                 cartdata
             }
+
+        case "SEARCH_VALUE":
+            const searchvalue = action.payload.value ;
+            return{
+                ...state,
+                searchvalue
+            }
+
 
         default :
         {

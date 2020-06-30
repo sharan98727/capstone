@@ -9,7 +9,8 @@ import Home from "./components/Home/home";
 import Appcontainer from "./components/appliances/appliancecontainer";
 import Housemaid from "./components/housemaids/housemaid";
 import Cart from "./components/cart/cart"
-import Search from "./components/navigation/searchbar";
+//import Search from "./components/navigation/searchbar";
+import Searchshow from "./components/searchshow/searchshow"
 
 export default function App() {
   return (
@@ -32,7 +33,7 @@ export default function App() {
           <Cart/>
         </Route>
         <Route path="/search">
-          <Search/>
+          <Searchshow/>
         </Route>
         <Route path="/">
           <Home />

@@ -7,15 +7,15 @@ class Navigation extends React.Component {
   render() {
     return (
     <div>
-      <nav className="navbar-expand-sm bg-dark navbar-dark text-white">
-        <form className="form-inline">
+      <div className="navbar-expand-sm bg-dark navbar-dark text-white">
+        <div className="form-inline">
          <h3><span className="badge mx-2 badge-warning"><b>COMPANY</b></span></h3> 
          <Link className="navbar-brand ml-2" to="/">
            Company
          </Link>
-         <Link to="/about">
-              <Search />
-         </Link> 
+        
+         <Search />
+        
           <Link className="navbar-brand ml-2" to="/housemaid">
            House-Maid
           </Link>
@@ -31,8 +31,8 @@ class Navigation extends React.Component {
          
 
          
-        </form>
-      </nav>
+        </div>
+      </div>
     </div>
     );
   }

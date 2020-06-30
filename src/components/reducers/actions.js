@@ -6,5 +6,11 @@ export const display = (item) => ({
 
 })
 
+export const searchitem = (values) => ({
+
+      type:"SEARCH_VALUE",
+      payload:values,
+})
+
 
 

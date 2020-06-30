@@ -1,19 +1,52 @@
 import React from "react";
+import { connect } from "react-redux";
+import { searchitem } from "../reducers/actions";
+import { withRouter } from "react-router";
 
 class Search extends React.Component {
 
    state={
-     value:""
+     value:"",
+     isloggedin:false,
    }
+
+   handlechange= (e) => {
+     this.setState({
+       value:e.target.value,
+     })
+   }
+
+   handlesubmit = () => {
+    // console.log(e);
+    // e.preventdefault();
+    const { value } = this.state;
+    this.props.search(value);
+            
+     this.setState({
+       isloggedin:true,
+     })
+     this.props.history.push('/search');
+   }
+     
+   
   render() {
     return (
-      <form>
-        <input style={{width:"500px"}} onchange={this.handlechange} type="text"
-        placeholder="search for household appliances">
+      <div>
+        <input style={{width:"500px"}} onChange={this.handlechange} type="text"
+        placeholder="search for household appliances" value={this.state.value}>
         </input>
-      </form>
+        <button onClick={this.handlesubmit}>Submit</button>
+      </div>
     );
   }
 }
 
-export default Search;
+const mapDispatchToProps = dispatch => {
+  return{
+      search: values => {
+        dispatch(searchitem(values));
+      }
+  }
+}
+
+export default connect(null,mapDispatchToProps) (withRouter(Search));
