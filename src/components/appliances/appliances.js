@@ -1,6 +1,8 @@
 import React from "react";
 import {  CardDeck, Card, ListGroup,ListGroupItem } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { display } from "../reducers/actions";
 
 class Appliance extends React.Component {
   constructor(props){
@@ -24,17 +26,21 @@ class Appliance extends React.Component {
           });
       }
 
-      handleclick = () => {
-          this.setState({
-              isloggedin:true
-          })
+      handleclick = (item) => {
+        
+        this.props.displayname(item);
+
+        this.setState({
+              isloggedin:true,
+        })
+                 
       }
     
    render(){
 
      if(this.state.isloggedin)
      {
-      return <Redirect to="/SignIn" />
+      return <Redirect to="/cart" />
      }
         
 
@@ -45,9 +51,9 @@ class Appliance extends React.Component {
                    <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />
                    <ListGroup className="list-group-flush">
                       <ListGroupItem>{item.alt_description}</ListGroupItem>
-                      <ListGroupItem>Rs{item.likes}/month</ListGroupItem>
+                      <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
                       <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
-                      <button onClick = {this.handleclick} >Add to Cart</button>
+                      <button onClick = {()=>{this.handleclick(item)}} >Add to Cart</button>
                     </ListGroup>
                     
               </Card>
@@ -59,20 +65,17 @@ class Appliance extends React.Component {
               <CardDeck style={{margin:"20px"}}>
                   {items}
               </CardDeck>
-          )
-            
-            
-           
-          
-
-       
+          )            
+                            
    }
    
-    
-    
-
-
 }
-export default Appliance;
+const mapDispatchToProps = dispatch =>{
+  return{
+       displayname: item => {
+         dispatch(display(item));
+       }
+  }
+}
 
-//{item.urls.small}
+export default connect(null,mapDispatchToProps)(Appliance);
