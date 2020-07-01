@@ -16,12 +16,13 @@ class Search extends React.Component {
      })
    }
 
-   handlesubmit = () => {
+   handlesubmit = (value) => {
     // console.log(e);
     // e.preventdefault();
-    const { value } = this.state;
+   // const { value } = this.state;
     this.props.search(value);
-            
+    console.log(this.state.value);
+    console.log({value});       
      this.setState({
        isloggedin:true,
      })
@@ -35,7 +36,8 @@ class Search extends React.Component {
         <input style={{width:"500px"}} onChange={this.handlechange} type="text"
         placeholder="search for household appliances" value={this.state.value}>
         </input>
-        <button onClick={this.handlesubmit}>Submit</button>
+        
+        <button onClick={()=>this.handlesubmit(this.state.value)}>Submit</button>
       </div>
     );
   }

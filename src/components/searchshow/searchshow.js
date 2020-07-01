@@ -9,6 +9,7 @@ class Searchshow extends React.Component {
     }
 
     componentDidMount(){
+        
         fetch(`https://api.unsplash.com/search/photos/?client_id=x00KRDCTU-TSnOwMefUykvB47JTFRXXnQoZN6wSjH9Q&query=${this.props.value}`)
             .then(response => response.json())
             .then(data => {
@@ -48,6 +49,7 @@ class Searchshow extends React.Component {
 
 
 const mapStateToProps = state => {
+    console.log(state);
     return{
         value:state.searchvalue,
     }

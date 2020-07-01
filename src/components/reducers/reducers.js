@@ -16,7 +16,10 @@ const cartreducer = (state=initstate,action) => {
             }
 
         case "SEARCH_VALUE":
-            const searchvalue = action.payload.value ;
+            //difference between action.payload and action.payload.value?
+            console.log(action.payload);
+            const searchvalue = action.payload ;
+            console.log(searchvalue);
             return{
                 ...state,
                 searchvalue
