@@ -1,92 +1,97 @@
-import React from 'react';
+import React from "react";
+import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class Signup extends React.Component {
-
   state = {
-    name:'',
-    email:'',
-    password:'',
+    name: "",
+    email: "",
+    password: "",
   };
 
-  handlechange = e => {
-    const {value,name} = e.target;
+  handlechange = (e) => {
+    const { value, name } = e.target;
     this.setState({
-      [name] :value,
-    })
-  }
+      [name]: value,
+    });
+  };
 
-  handlesubmit = e => {
+  handlesubmit = (e) => {
     e.preventDefault();
     //fetch ki route em ivvali ? nenu evariki fetch cheyyali ?
-    fetch('/signup', {
-      method: 'POST',
+    fetch("/signup", {
+      method: "POST",
       body: JSON.stringify(this.state),
       headers: {
-        'Content-Type': 'application/json'
-      }
+        "Content-Type": "application/json",
+      },
     })
-    .then(res => {
-      if (res.status === 200) {
-        this.props.history.push('/Signin');
-      } else {
-        const error = new Error(res.error);
-        throw error;
-      }
-    })
-    .catch(err => {
-      console.error(err);
-      alert('Error logging in please try again');
-    });
-  
-  }
-
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.error) {
+          console.log("Error");
+          alert(data.error);
+        }
+        if (data.message) {
+          console.log("SignIn");
+          this.props.history.push('/SignIn');
+        } else {
+          const error = new Error(data.error);
+          throw error;
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Error logging in please try again");
+      });
+  };
 
   render() {
     return (
-      <form className='demoForm' onSubmit={this.handlesubmit}>
+      <form className="demoForm" onSubmit={this.handlesubmit}>
         <h2>Signup Here</h2>
-        <div className='panel panel-default mt-4'></div>
+        <div className="panel panel-default mt-4"></div>
 
-        <div className='panel panel-default'>
-          <label htmlFor='name'>Enter your Username</label>
+        <div className="panel panel-default">
+          <label htmlFor="name">Enter your Username</label>
           <input
-            type='name'
+            type="name"
             required
-            className='form-control'
-            name='name'
-            placeholder='Name'
+            className="form-control"
+            name="name"
+            placeholder="Name"
             value={this.state.name}
             onChange={this.handlechange}
-
           />
         </div>
 
-        <div className='panel panel-default'>
-          <label htmlFor='email'>Enter your Email</label>
+        <div className="panel panel-default">
+          <label htmlFor="email">Enter your Email</label>
           <input
-            type='email'
+            type="email"
             required
-            className='form-control'
-            name='email'
-            placeholder='Email'
+            className="form-control"
+            name="email"
+            placeholder="Email"
             value={this.state.email}
             onChange={this.handlechange}
           />
 
-          <div className='panel panel-default'>
-            <label htmlFor='password'>Enter your Password</label>
+          <div className="panel panel-default">
+            <label htmlFor="password">Enter your Password</label>
             <input
-              type='password'
+              type="password"
               required
-              className='form-control'
-              name='password'
-              placeholder='password'
+              className="form-control"
+              name="password"
+              placeholder="password"
               value={this.state.password}
               onChange={this.handlechange}
             />
           </div>
         </div>
-        <button type='submit' className='btn btn-primary mt-2'>
+        <button type="submit" className="btn btn-primary mt-2">
           Sign In
         </button>
       </form>
@@ -94,4 +99,4 @@ class Signup extends React.Component {
   }
 }
 
-export default Signup;
+export default withRouter(Signup);
