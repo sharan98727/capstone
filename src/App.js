@@ -3,7 +3,7 @@ import React from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/navigationbar";
 import Signin from "./components/Signin/signin";
-import Login from "./components/login/login";
+
 import Home from "./components/Home/home";
 //import Appliance from "./components/appliances/appliances";
 import Appcontainer from "./components/appliances/appliancecontainer";
@@ -12,6 +12,7 @@ import Cart from "./components/cart/cart"
 //import Search from "./components/navigation/searchbar";
 import Searchshow from "./components/searchshow/searchshow"
 import { connect } from "react-redux";
+import Signup from "./components/signup/signup";
 
 class  App extends React.Component {
 
@@ -23,8 +24,8 @@ class  App extends React.Component {
         <Route path="/SignIn">
           <Signin />
         </Route>
-        <Route path="/Login">
-          <Login />
+        <Route path="/Signup">
+          <Signup/>
         </Route>
         <Route path="/appliances">
           <Appcontainer />

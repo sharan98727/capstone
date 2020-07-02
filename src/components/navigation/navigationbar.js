@@ -23,10 +23,10 @@ class Navigation extends React.Component {
            Appliances
           </Link>
           <Link className="navbar-brand ml-2" to="/SignIn">
-           SignUp
+           SignIn
           </Link>
-         <Link className="navbar-brand ml-2" to="/Login">
-           Login
+         <Link className="navbar-brand ml-2" to="/Signup">
+           Signup
           </Link>
          
 
