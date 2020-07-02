@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class Signup extends React.Component {
@@ -49,7 +49,7 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <form className="demoForm" onSubmit={this.handlesubmit}>
+      <form className="demoForm" onSubmit={this.handlesubmit} style={{margin:"auto",width:"500px"}}>
         <h2>Signup Here</h2>
         <div className="panel panel-default mt-4"></div>
 
@@ -92,7 +92,7 @@ class Signup extends React.Component {
           </div>
         </div>
         <button type="submit" className="btn btn-primary mt-2">
-          Sign In
+          Sign Up
         </button>
       </form>
     );

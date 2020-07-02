@@ -1,83 +1,87 @@
-import React, { Component } from 'react';
-import { FormErrors } from './FormErrors';
-import './Form.css';
 
-class Form extends Component {
-  constructor (props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-      formErrors: {email: '', password: ''},
-      emailValid: false,
-      passwordValid: false,
-      formValid: false
-    }
-  }
+import React from "react";
+import { withRouter } from "react-router";
 
-  handleUserInput = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    this.setState({[name]: value},
-                  () => { this.validateField(name, value) });
-  }
+class Signin extends React.Component {
+  state = {
+    email: "",
+    password: "",
+  };
 
-  validateField(fieldName, value) {
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-    let passwordValid = this.state.passwordValid;
+  handlechange = (e) => {
+    const { value, name } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
 
-    switch(fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'password':
-        passwordValid = value.length >= 6;
-        fieldValidationErrors.password = passwordValid ? '': ' is too short';
-        break;
-      default:
-        break;
-    }
-    this.setState({formErrors: fieldValidationErrors,
-                    emailValid: emailValid,
-                    passwordValid: passwordValid
-                  }, this.validateForm);
-  }
+  handlesubmit = (e) => {
+    e.preventDefault();
+    fetch("/signin", {
+      method: "POST",
+      body: JSON.stringify(this.state),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.error) {
+          console.log("Error");
+          alert(data.error);
+        }
+        if (data.message) {
+          console.log("SignIn");
+          this.props.history.push('/');
+        } else {
+          const error = new Error(data.error);
+          throw error;
+        }
+      })
+      .catch((err) => {
+        console.error(err);
+        alert("Error logging in please try again");
+      });
+  };
 
-  validateForm() {
-    this.setState({formValid: this.state.emailValid && this.state.passwordValid});
-  }
-
-  errorClass(error) {
-    return(error.length === 0 ? '' : 'has-error');
-  }
-
-  render () {
+  render() {
     return (
-      <form className="demoForm">
-        <h2>Sign In</h2>
+      <form className="demoForm" onSubmit={this.handlesubmit} style={{margin:"auto",width:"500px"}}>
+        <h2>Signin Here</h2>
+        <div className="panel panel-default mt-4"></div>
+
         <div className="panel panel-default">
-          <FormErrors formErrors={this.state.formErrors} />
-        </div>
-        <div className={`form-group ${this.errorClass(this.state.formErrors.email)}`}>
-          <label htmlFor="email">UserName or Email</label>
-          <input type="email" required className="form-control" name="email"
+          <label htmlFor="email">Enter your Email</label>
+          <input
+            type="email"
+            required
+            className="form-control"
+            name="email"
             placeholder="Email"
             value={this.state.email}
-            onChange={this.handleUserInput}  />
+            onChange={this.handlechange}
+          />
+
+          <div className="panel panel-default">
+            <label htmlFor="password">Enter your Password</label>
+            <input
+              type="password"
+              required
+              className="form-control"
+              name="password"
+              placeholder="password"
+              value={this.state.password}
+              onChange={this.handlechange}
+            />
+          </div>
         </div>
-        <div className={`form-group ${this.errorClass(this.state.formErrors.password)}`}>
-          <label htmlFor="password">Password</label>
-          <input type="password" className="form-control" name="password"
-            placeholder="Password"
-            value={this.state.password}
-            onChange={this.handleUserInput}  />
-        </div>
-        <button type="submit" className="btn btn-primary" disabled={!this.state.formValid}>Sign In</button>
+        <button type="submit" className="btn btn-primary mt-2">
+          Sign In
+        </button>
       </form>
-    )
+    );
   }
 }
 
-export default Form;
+export default withRouter(Signin);
