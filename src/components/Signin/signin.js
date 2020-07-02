@@ -15,6 +15,13 @@ class Signin extends React.Component {
     });
   };
 
+  authenticate = (data,next) => {
+    if(typeof window !== 'undefined'){
+      localStorage.setItem('jwt',JSON.stringify(data));
+      next()
+    }
+  }
+
   handlesubmit = (e) => {
     e.preventDefault();
     fetch("/signin", {
@@ -27,17 +34,20 @@ class Signin extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
-        if (data.error) {
+        if (data.Error) {
           console.log("Error");
-          alert(data.error);
+          alert(data.Error);
         }
-        if (data.message) {
-          console.log("SignIn");
-          this.props.history.push('/');
-        } else {
-          const error = new Error(data.error);
-          throw error;
-        }
+        if (data.user) {
+          this.authenticate(data,() => {
+            console.log("SignIn");
+            this.props.history.push('/');
+          })
+        } 
+        // else {
+        //   const error = new Error(data.error);
+        //   throw error;
+        // }
       })
       .catch((err) => {
         console.error(err);
