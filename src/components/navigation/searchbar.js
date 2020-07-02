@@ -26,7 +26,7 @@ class Search extends React.Component {
      this.setState({
        isloggedin:true,
      })
-     this.props.history.push('/search');
+     this.props.history.push(`/search/${value}`);
    }
      
    

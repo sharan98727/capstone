@@ -11,8 +11,11 @@ import Housemaid from "./components/housemaids/housemaid";
 import Cart from "./components/cart/cart"
 //import Search from "./components/navigation/searchbar";
 import Searchshow from "./components/searchshow/searchshow"
+import { connect } from "react-redux";
 
-export default function App() {
+class  App extends React.Component {
+
+  render(){
   return (
     <BrowserRouter>
       <Navigation />
@@ -32,7 +35,7 @@ export default function App() {
         <Route path="/cart">
           <Cart/>
         </Route>
-        <Route path="/search">
+        <Route path={`/search/${this.props.value}`}>
           <Searchshow/>
         </Route>
         <Route path="/">
@@ -42,4 +45,13 @@ export default function App() {
     </BrowserRouter>
   );
 }
+}
+
+const mapStateToProps = state => {
+  return{
+    value:state.searchvalue,
+  }
+}
+
+export default connect(mapStateToProps)(App);
 
