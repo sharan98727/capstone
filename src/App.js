@@ -13,7 +13,7 @@ import Cart from "./components/cart/cart"
 import Searchshow from "./components/searchshow/searchshow"
 import { connect } from "react-redux";
 import Signup from "./components/signup/signup";
-import Signout from "./components/signout/signout";
+// import Signout from "./components/signout/signout";
 
 class  App extends React.Component {
 
@@ -27,9 +27,6 @@ class  App extends React.Component {
         </Route>
         <Route path="/Signup">
           <Signup/>
-        </Route>
-        <Route path="/Signout">
-          <Signout/>
         </Route>
         <Route path="/appliances">
           <Appcontainer />

@@ -4,50 +4,31 @@ import "./navigationbar.css";
 import Search from "./searchbar";
 import { connect } from "react-redux";
 // import { isAuthenticated } from "../index";
+import {signout} from "../signout/signout"
 
 class Navigation extends React.Component {
- 
-  // state = {
+
+    constructor(props){
+        super(props);
+        this.state = {
+            isLogged: localStorage.getItem("jwt"),
+          };
+    }
     
-  //   isLogged:'',
-  // };
-
-  //      isAuthenticated(){
-  //     if (typeof window == "undefined") {
-  //       return false;
-  //     }
-  //     if (localStorage.getItem("jwt")) {
-  //       return true;
-  //     }
-  //     else{
-  //       return false;
-  //     }
-  //   }
-
-  // componentDidMount() {
-  //   this.setState({
-  //     isLogged:this.props.tokenvalue,
-  //   })
-  //   console.log(this.state.isLogged);
-  // }
-
-  // handleclick = () => {
-  //   this.setState ({
-  //     isLogged:this.props.tokenvalue,
-  //   })
-  //   console.log(this.props.tokenvalue);
-  // }
-
-  
+  componentDidUpdate(props){
+this.state.isLogged = localStorage.getItem("jwt")
+  }
 
   render() {
     let message;
     if (this.props.tokenvalue) {
       message = (
         <Fragment>
-          <Link className="navbar-brand ml-4" to="/Signout">
+          <span className="navbar-brand ml-4" onClick={() => signout(() => {
+            console.log("Signout");
+          })}>
             Signout
-          </Link>
+          </span>
           <Link className="navbar-brand ml-4" to="/Profile">
             Profile
           </Link>
