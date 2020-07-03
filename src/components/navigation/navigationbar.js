@@ -1,32 +1,27 @@
 import React,{Fragment} from "react";
 import { Link } from "react-router-dom";
+import { withRouter } from 'react-router';
 import "./navigationbar.css";
 import Search from "./searchbar";
 import { connect } from "react-redux";
 // import { isAuthenticated } from "../index";
 import {signout} from "../signout/signout"
+import { Passtoken } from "../reducers/actions";
 
-class Navigation extends React.Component {
-
-    constructor(props){
-        super(props);
-        this.state = {
-            isLogged: localStorage.getItem("jwt"),
-          };
-    }
-    
-  componentDidUpdate(props){
-this.state.isLogged = localStorage.getItem("jwt")
-  }
-
+class Navigation extends React.Component { 
+  
   render() {
     let message;
     if (this.props.tokenvalue) {
       message = (
         <Fragment>
-          <span className="navbar-brand ml-4" onClick={() => signout(() => {
-            console.log("Signout");
-          })}>
+          <span className="navbar-brand ml-4" onClick={() => {
+              signout(() => {
+              console.log("Signout");
+              });
+              this.props.passtoken(localStorage.removeItem("jwt"));
+              this.props.history.push('/SignIn')
+            }}>
             Signout
           </span>
           <Link className="navbar-brand ml-4" to="/Profile">
@@ -79,4 +74,12 @@ const mapStateToProps = state => {
     tokenvalue:state.token.token,
   }
 }
-export default connect(mapStateToProps)(Navigation);
+
+const mapDispatchToProps = dispatch => {
+  return{
+      passtoken: () => {
+        dispatch(Passtoken(""));
+      }
+  }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Navigation));
