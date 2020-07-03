@@ -4,6 +4,7 @@ import "./navigationbar.css";
 import Search from "./searchbar";
 
 class Navigation extends React.Component {
+  
   render() {
     return (
     <div>
