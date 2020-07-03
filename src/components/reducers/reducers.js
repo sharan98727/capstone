@@ -1,7 +1,8 @@
 
 const initstate = {
     cartdata: [],
-    searchvalue:''
+    searchvalue:'',
+    token:'',
 }
 
 const cartreducer = (state=initstate,action) => {
@@ -24,6 +25,15 @@ const cartreducer = (state=initstate,action) => {
                 ...state,
                 searchvalue
             }
+
+        case "GOT_TOKEN":
+
+        const token = action.payload ;
+ //       console.log(token);
+          return{
+              ...state,
+              token
+          }
 
 
         default :

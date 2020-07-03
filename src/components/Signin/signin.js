@@ -1,6 +1,8 @@
 
 import React from "react";
 import { withRouter } from "react-router";
+import { connect } from "react-redux";
+import { Passtoken } from "../reducers/actions";
 
 class Signin extends React.Component {
   state = {
@@ -13,7 +15,18 @@ class Signin extends React.Component {
     this.setState({
       [name]: value,
     });
+
+ //   console.log(localStorage.getItem('jwt'));
   };
+
+  authenticate = (data,next) => {
+    if(typeof window !== 'undefined'){
+      localStorage.setItem('jwt',JSON.stringify(data));
+    // console.log(localStorage.getItem('jwt'));
+     
+      next()
+    }
+  }
 
   handlesubmit = (e) => {
     e.preventDefault();
@@ -26,24 +39,31 @@ class Signin extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
-        if (data.error) {
+//        console.log(data);
+        this.props.passtoken(data);
+
+        if (data.Error) {
           console.log("Error");
-          alert(data.error);
+          alert(data.Error);
         }
-        if (data.message) {
-          console.log("SignIn");
-          this.props.history.push('/');
-        } else {
-          const error = new Error(data.error);
-          throw error;
-        }
+        if (data.user) {
+          this.authenticate(data,() => {
+  //          console.log("SignIn");
+            this.props.history.push('/');
+          })
+
+        } 
+        // else {
+        //   const error = new Error(data.error);
+        //   throw error;
+        // }
       })
       .catch((err) => {
         console.error(err);
         alert("Error logging in please try again");
       });
   };
+
 
   render() {
     return (
@@ -76,7 +96,7 @@ class Signin extends React.Component {
             />
           </div>
         </div>
-        <button type="submit" className="btn btn-primary mt-2">
+        <button type="submit" className="btn btn-primary mt-2" >
           Sign In
         </button>
       </form>
@@ -84,4 +104,13 @@ class Signin extends React.Component {
   }
 }
 
-export default withRouter(Signin);
+const mapDispatchToProps = dispatch => {
+  return {
+       passtoken: data => {
+         dispatch(Passtoken(data));
+       }
+  }
+}
+ 
+export default connect(null,mapDispatchToProps)(withRouter(Signin));
+

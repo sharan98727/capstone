@@ -12,5 +12,10 @@ export const searchitem = (values) => ({
       payload:values,
 })
 
+export const Passtoken = token => ({
+      type:"GOT_TOKEN",
+      payload:token
+})
+
 
 

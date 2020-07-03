@@ -33,7 +33,7 @@ class Search extends React.Component {
   render() {
     return (
       <div>
-        <input style={{width:"500px"}} onChange={this.handlechange} type="text"
+        <input style={{width:"400px"}} onChange={this.handlechange} type="text"
         placeholder="search for household appliances" value={this.state.value}>
         </input>
         
