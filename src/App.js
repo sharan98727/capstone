@@ -13,6 +13,7 @@ import Cart from "./components/cart/cart"
 import Searchshow from "./components/searchshow/searchshow"
 import { connect } from "react-redux";
 import Signup from "./components/signup/signup";
+import Profile from "./components/profile/profile";
 // import Signout from "./components/signout/signout";
 
 class  App extends React.Component {
@@ -39,6 +40,9 @@ class  App extends React.Component {
         </Route>
         <Route path={`/search/${this.props.value}`}>
           <Searchshow/>
+        </Route>
+        <Route path="/profile">
+          <Profile />
         </Route>
         <Route path="/">
           <Home />

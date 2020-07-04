@@ -4,7 +4,6 @@ import { withRouter } from 'react-router';
 import "./navigationbar.css";
 import Search from "./searchbar";
 import { connect } from "react-redux";
-// import { isAuthenticated } from "../index";
 import {signout} from "../signout/signout"
 import { Passtoken } from "../reducers/actions";
 
@@ -14,7 +13,13 @@ class Navigation extends React.Component {
     let message;
     if (this.props.tokenvalue) {
       message = (
-        <Fragment>
+        <Fragment>         
+          <Link className="navbar-brand ml-4" to="/profile">
+            Profile
+          </Link>
+          <Link className="navbar-brand ml-4" to="/cart">
+            Cart
+          </Link>
           <span className="navbar-brand ml-4" onClick={() => {
               signout(() => {
               console.log("Signout");
@@ -24,9 +29,6 @@ class Navigation extends React.Component {
             }}>
             Signout
           </span>
-          <Link className="navbar-brand ml-4" to="/cart">
-            Profile
-          </Link>
         </Fragment>
       );
     } else {

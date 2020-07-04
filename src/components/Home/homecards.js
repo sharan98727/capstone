@@ -2,7 +2,7 @@ import React from "react";
 import { Card, CardDeck, ListGroup, ListGroupItem} from "react-bootstrap";
 import "./home.css";
 import { withRouter } from "react-router-dom";
-//import { Redirect } from "react-router-dom";
+
 
 class Homecards extends React.Component {
   state = {
@@ -29,21 +29,29 @@ class Homecards extends React.Component {
     });
   }
 
-  handleclick = () => {
-     
-   
+  handleclick = (item) => {
+    console.log(item.description);
+    console.log(item.description === "House Appliances");
+    if(item.description  === "House Appliances" )
+    {
+      
+      this.props.history.push('/appliances');
+    }
 
-    
+    else{
+      this.props.history.push('/housemaid');
+    }
+
   }
-
+     
   render() {
     const image = this.state.images.map(item => {
       return (
-        <Card style={{ width: '12rem' }} key={item.id}>
-          <Card.Img variant="top" src={item.url} width="100px" height="200px" />
+        <Card style={{ width: '6rem' }} key={item.id}>
+          <Card.Img variant="top" src={item.url} width="50px" height="200px" />
           <ListGroup className="list-group-flush">
             <ListGroupItem>{item.description}</ListGroupItem>                 
-            <button onClick = {this.handleclick} >{item.description}</button>
+            <button onClick = {() => this.handleclick(item)} >{item.description}</button>
             </ListGroup>
                     
           </Card>
@@ -51,7 +59,7 @@ class Homecards extends React.Component {
     });
 
     return(
-      <CardDeck className="mx-5" >
+      <CardDeck style={{marginLeft:"130px",width:"80%"}} >
           {image}
       </CardDeck>
     )
