@@ -1,76 +1,64 @@
 import React from "react";
-import { Card, CardDeck} from "react-bootstrap";
+import { Card, CardDeck, ListGroup, ListGroupItem} from "react-bootstrap";
 import "./home.css";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 
 class Homecards extends React.Component {
   state = {
     images: [],
-    cardnumber: 2,
-    navigate:false,
+    
   };
 
   componentDidMount() {
-    fetch(
-      "https://api.unsplash.com/photos/?client_id=x00KRDCTU-TSnOwMefUykvB47JTFRXXnQoZN6wSjH9Q"
-    )
-      .then(response => response.json())
-      .then(data => {
-        // console.log(data[0].urls.raw);
-        this.setState({
-          images: data,
-          
-        });
-        // console.log(this.state.quotesdata[0].urls.raw);
-      });
+    let array = [
+      {
+        url:
+          "https://images.unsplash.com/photo-1578593195423-df7df9563457?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=336&q=80",
+        description: "housemaids"
+      },
+      {
+        url:
+          "https://images.unsplash.com/photo-1556909172-bd5315ff61a0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80",
+        description: "House Appliances"
+      }
+    ];
+
+    this.setState({
+      images: array
+    });
   }
 
   handleclick = () => {
      
-   this.setState({
-     navigate:true,
-   })
+   
 
     
   }
 
   render() {
-
-    if(this.state.navigate)
-    {
-      return <Redirect to="/appliances" />
-    }
-    
-    
-    const items = this.state.images.slice(0, this.state.cardnumber).map(item => {
-      return(
-      <div key={item.id}>
-        
-          <Card style={{ width: '18rem',height:'15rem' }} key={item.id}>          
-           <Card.Img variant="top" src={item.urls.full} width="400px" height="200px" />
-           <Card.Body style={{height:'3rem',textAlign:'center',backgroundColor:'grey',color:'white',justifyContent:'center'}} >
-             <Card.Title>House Maids</Card.Title>
-           </Card.Body> 
-           <button onClick = {this.handleclick}>click</button>         
-          </Card>
-          {/*<img src={item.urls.regular} alt="" height="250px" width="250px" />*/}
-         
-        </div>
-      )
-      })
+    const image = this.state.images.map(item => {
       return (
-      <CardDeck className="card-display">
-       
-        {items}
-        
-        
-      </CardDeck>
+        <Card style={{ width: '12rem' }} key={item.id}>
+          <Card.Img variant="top" src={item.url} width="100px" height="200px" />
+          <ListGroup className="list-group-flush">
+            <ListGroupItem>{item.description}</ListGroupItem>                 
+            <button onClick = {this.handleclick} >{item.description}</button>
+            </ListGroup>
+                    
+          </Card>
       );
-    
+    });
+
+    return(
+      <CardDeck className="mx-5" >
+          {image}
+      </CardDeck>
+    )
   }
 }
 
-export default Homecards;
+export default (withRouter(Homecards));
 
          
                   

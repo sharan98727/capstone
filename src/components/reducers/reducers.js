@@ -17,11 +17,14 @@ const cartreducer = (state=initstate,action) => {
             }
 
         case "REMOVE_FROM_CART": 
-          const cartdatas = [...state.cartdata,];
+          console.log(action.payload.item.alt_description);
+          console.log(state.cartdata.alt_description);
           return{
               ...state,
-              cartdatas
+              cartdata:[...state.cartdata.filter(item => item.alt_description !== action.payload.item.alt_description)]
+              
           }
+          
 
         case "SEARCH_VALUE":
             //difference between action.payload and action.payload.value?

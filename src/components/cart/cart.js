@@ -9,6 +9,7 @@ class Cart extends React.Component {
 
 handleremove = (item) => {
     this.props.remove(item);
+   // this.props.history.push('/cart');
 }
 
 

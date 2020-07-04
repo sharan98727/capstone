@@ -69,6 +69,7 @@ const mapStateToProps = state => {
     console.log(state);
     return{
         value:state.searchvalue,
+        tokenvalue:state.token.token,
     }
 }
 
