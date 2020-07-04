@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Card, ListGroup ,ListGroupItem ,CardColumns } from "react-bootstrap";
+import { withRouter } from "react-router-dom";
+import { display } from "../reducers/actions";
 
 class Searchshow extends React.Component {
 
@@ -19,6 +21,21 @@ class Searchshow extends React.Component {
             })
 
     }
+
+
+    handleclick = (item) => {
+        this.props.displayname(item);
+  
+        if(this.props.tokenvalue) {
+          this.props.history.push('/cart');
+        } 
+        else {
+          this.props.history.push('/SignIn')
+        } 
+        
+      }
+
+
 
     render(){
 
@@ -55,4 +72,13 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(Searchshow);
+
+const mapDispatchToProps = dispatch =>{
+    return{
+         displayname: (item) => {
+           dispatch(display(item));
+         }
+    }
+  }
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Searchshow));

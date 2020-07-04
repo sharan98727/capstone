@@ -1,9 +1,15 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Card, CardColumns,ListGroup,ListGroupItem } from "react-bootstrap";
+import {withRouter} from "react-router";
+import { Remove } from "../reducers/actions";
 
 class Cart extends React.Component {
 
+
+handleremove = (item) => {
+    this.props.remove(item);
+}
 
 
     render(){
@@ -18,6 +24,7 @@ class Cart extends React.Component {
                       <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
                       <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
                       <button onClick = {()=>{this.handleclick({item})}} >Proceed to payment</button>
+                      <button onClick ={()=>{this.handleremove({item})}} >Remove from cart </button>
                     </ListGroup>               
                     
             </Card>
@@ -45,4 +52,12 @@ const mapStateToProps = state =>{
     };
 };
 
-export default connect(mapStateToProps)(Cart);
+const mapDispatchToProps = dispatch => {
+    return{
+        remove: item => {
+            dispatch(Remove(item));
+        }
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Cart));

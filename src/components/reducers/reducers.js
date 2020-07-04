@@ -16,6 +16,13 @@ const cartreducer = (state=initstate,action) => {
                 cartdata
             }
 
+        case "REMOVE_FROM_CART": 
+          const cartdatas = [...state.cartdata,];
+          return{
+              ...state,
+              cartdatas
+          }
+
         case "SEARCH_VALUE":
             //difference between action.payload and action.payload.value?
             console.log(action.payload);

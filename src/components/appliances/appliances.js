@@ -1,8 +1,9 @@
 import React from "react";
 import {  CardDeck, Card, ListGroup,ListGroupItem } from "react-bootstrap";
-import { Redirect } from "react-router-dom";
+//import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { display } from "../reducers/actions";
+import { withRouter } from 'react-router';
 
 class Appliance extends React.Component {
   constructor(props){
@@ -30,19 +31,15 @@ class Appliance extends React.Component {
         
         this.props.displayname(item);
 
-        this.setState({
-              isloggedin:true,
-        })
-                 
+        if(this.props.tokenvalue) {
+          this.props.history.push('/cart');
+        } 
+        else {
+          this.props.history.push('/SignIn')
+        } 
       }
     
    render(){
-
-     if(this.state.isloggedin)
-     {
-      return <Redirect to="/cart" />
-     }
-        
 
         const items = this.state.appliancecards.slice(0, 4).map(item => {
             return (
@@ -78,4 +75,10 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-export default connect(null,mapDispatchToProps)(Appliance);
+const mapStateToProps = state => {
+  return {
+    tokenvalue:state.token.token,
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Appliance));

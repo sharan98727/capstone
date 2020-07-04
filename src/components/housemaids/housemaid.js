@@ -2,7 +2,7 @@ import React from "react";
 import {  CardColumns, Card, ListGroup,ListGroupItem } from "react-bootstrap";
 import { connect } from "react-redux";
 import { display } from "../reducers/actions";
-import { Redirect } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class Housemaid extends React.Component{
 
@@ -24,20 +24,17 @@ class Housemaid extends React.Component{
     handleclick = (item) => {
       this.props.displayname(item);
 
-      this.setState({
-        isloggedin:true,
-      })
-
+      if(this.props.tokenvalue) {
+        this.props.history.push('/cart');
+      } 
+      else {
+        this.props.history.push('/SignIn')
+      } 
+      
     }
 
     render(){
-
-      if(this.state.isloggedin){
-        return(
-        <Redirect to ="/cart" />
-        )
-      }
-
+    
         const items = this.state.maidimages.map(item => {
         return(
             <Card style={{ width: '18rem' }} key={item.id}>
@@ -71,4 +68,10 @@ const mapDispatchToProps = dispatch =>{
   }
 }
 
-export default connect(null,mapDispatchToProps)(Housemaid);
+const mapStateToProps = state => {
+  return {
+    tokenvalue:state.token.token,
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(withRouter(Housemaid));

@@ -24,7 +24,7 @@ class Navigation extends React.Component {
             }}>
             Signout
           </span>
-          <Link className="navbar-brand ml-4" to="/Profile">
+          <Link className="navbar-brand ml-4" to="/cart">
             Profile
           </Link>
         </Fragment>

@@ -6,6 +6,12 @@ export const display = (item) => ({
 
 })
 
+export const Remove = (item) => ({
+
+      type:"REMOVE_FROM_CART",
+      payload:item,
+})
+
 export const searchitem = (values) => ({
 
       type:"SEARCH_VALUE",
