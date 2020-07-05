@@ -1,90 +1,124 @@
 import React from "react";
 
 class Seller extends React.Component {
+  state = {
+    name: "",
+    price: "",
+    delivery: "",
+    image: "",
+    description: "",
+  };
 
-    state = {
-        productname:'',
-        price:'',
-        deliverytime: '',
-        photo:'',
+  handlechange = (e) => {
+    const { value, name } = e.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  imageUpload = async (e) => {
+    e.preventDefault();
+    const files = e.target.files;
+    const data = new FormData();
+    data.append("file", files[0]);
+    data.append("upload_preset", "capstone");
+    data.append("cloud_name", "dgvz93fif");
+    await fetch("https://api.cloudinary.com/v1_1/dgvz93fif/image/upload", {
+      method: "POST",
+      body: data,
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        this.state.image = data.url;
+        console.log(data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  handlesubmit = (e) => {
+    e.preventDefault();
+    console.log(this.state);
+    if (this.state.image === "") {
+      alert("Wait till Image is Uploading");
+    } else {
+      fetch("/seller", {
+        method: "POST",
+        body: JSON.stringify(this.state),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((err) => console.log(err));
     }
+  };
 
-    handlechange = e => {
-      const { value, name } = e.target;
-      this.setState({
-        [name]: value,
-      });
-    };
+  render() {
+    return (
+      <form
+        className="demoForm"
+        onSubmit={this.handlesubmit}
+        style={{ margin: "auto", width: "500px" }}
+      >
+        <h2>Post Your Product Details</h2>
+        <div className="panel panel-default mt-4"></div>
 
-    handlesubmit = e => {
-      e.preventDefault();
-      
-    }
+        <div className="panel panel-default">
+          <label htmlFor="name">Enter Name of Product</label>
+          <input
+            type="name"
+            required
+            className="form-control"
+            name="name"
+            placeholder="ProductName"
+            value={this.state.name}
+            onChange={this.handlechange}
+          />
+        </div>
 
-    render(){
-        return(
-            <form className="demoForm" onSubmit={this.handlesubmit} style={{margin:"auto",width:"500px"}}>
-            <h2>Post Your Product Details</h2>
-            <div className="panel panel-default mt-4"></div>
-    
-            <div className="panel panel-default" >
-              <label htmlFor="name">Enter Name of Product</label>
-              <input
-                type="name"
-                required
-                className="form-control"
-                name="productname"
-                placeholder="Name"
-                value={this.state.productname}
-                onChange={this.handlechange}
-              />
-            </div>
-    
-            <div className="panel panel-default">
-              <label htmlFor="name">Enter price for a week</label>
-              <input
-                type="text"
-                required
-                className="form-control"
-                name="price"
-                placeholder="price"
-                value={this.state.price}
-                onChange={this.handlechange}
-              />
-    
-              <div className="panel panel-default">
-                <label htmlFor="name">Enter Delivery Time</label>
-                <input
-                  type="text"
-                  required
-                  className="form-control"
-                  name="deliverytime"
-                  placeholder="delivery time"
-                  value={this.state.deliverytime}
-                  onChange={this.handlechange}
-                />
-              </div>
-              <div className="panel panel-default">
-                <label htmlFor="image">upload your Image</label>
-                <input
-                  type="file"
-                  accept="image/*"
-                  required
-                  className="form-control"
-                  name="photo"
-                  placeholder="image"
-                  value={this.state.photo}
-                  onChange={this.handlechange}
-                />
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary mt-2">
-              Submit
-            </button>
-          </form>
-        )
-    }
+        <div className="panel panel-default">
+          <label htmlFor="name">Enter price for a week</label>
+          <input
+            type="text"
+            required
+            className="form-control"
+            name="price"
+            placeholder="price"
+            value={this.state.price}
+            onChange={this.handlechange}
+          />
 
+          <div className="panel panel-default">
+            <label htmlFor="name">Enter Delivery Time</label>
+            <input
+              type="text"
+              required
+              className="form-control"
+              name="delivery"
+              placeholder="delivery time"
+              value={this.state.delivery}
+              onChange={this.handlechange}
+            />
+          </div>
+          <div className="panel panel-default">
+            <label htmlFor="image">upload your Image</label>
+            <input
+              type="file"
+              accept="image/*"
+              className="form-control"
+              name="image"
+              placeholder="image"
+              onChange={this.imageUpload}
+            />
+          </div>
+        </div>
+        <button type="submit" className="btn btn-primary mt-2">
+          Submit
+        </button>
+      </form>
+    );
+  }
 }
 
 export default Seller;

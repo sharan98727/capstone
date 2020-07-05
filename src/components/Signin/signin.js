@@ -1,4 +1,3 @@
-
 import React from "react";
 import { withRouter } from "react-router";
 import { connect } from "react-redux";
@@ -8,6 +7,7 @@ class Signin extends React.Component {
   state = {
     email: "",
     password: "",
+    role: "",
   };
 
   handlechange = (e) => {
@@ -16,17 +16,17 @@ class Signin extends React.Component {
       [name]: value,
     });
 
- //   console.log(localStorage.getItem('jwt'));
+    //   console.log(localStorage.getItem('jwt'));
   };
 
-  authenticate = (data,next) => {
-    if(typeof window !== 'undefined'){
-      localStorage.setItem('jwt',JSON.stringify(data));
-    // console.log(localStorage.getItem('jwt'));
-     
-      next()
+  authenticate = (data, next) => {
+    if (typeof window !== "undefined") {
+      localStorage.setItem("jwt", JSON.stringify(data));
+      // console.log(localStorage.getItem('jwt'));
+
+      next();
     }
-  }
+  };
 
   handlesubmit = (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ class Signin extends React.Component {
     })
       .then((res) => res.json())
       .then((data) => {
-       console.log(data);
+        console.log(data);
         this.props.passtoken(data);
 
         if (data.Error) {
@@ -47,18 +47,16 @@ class Signin extends React.Component {
           alert(data.Error);
         }
         if (data.user) {
-          this.authenticate(data,() => {
-  //          console.log("SignIn");
-            this.props.history.push('/');
-          })
-
-        } 
-        if(data.seller) {
-          this.authenticate(data,() => {
+          this.authenticate(data, () => {
             //          console.log("SignIn");
-                      this.props.history.push('/seller');
-                    })
-
+            this.props.history.push("/");
+          });
+        }
+        if (data.seller) {
+          this.authenticate(data, () => {
+            //          console.log("SignIn");
+            this.props.history.push("/seller");
+          });
         }
         // else {
         //   const error = new Error(data.error);
@@ -71,10 +69,13 @@ class Signin extends React.Component {
       });
   };
 
-
   render() {
     return (
-      <form className="demoForm" onSubmit={this.handlesubmit} style={{margin:"auto",width:"500px"}}>
+      <form
+        className="demoForm"
+        onSubmit={this.handlesubmit}
+        style={{ margin: "auto", width: "500px" }}
+      >
         <h2>Signin Here</h2>
         <div className="panel panel-default mt-4"></div>
 
@@ -104,25 +105,24 @@ class Signin extends React.Component {
           </div>
 
           <div className="panel panel-default">
-          <label htmlFor="password">Select the Role</label>
+            <label htmlFor="password">Select the Role</label>
             <select
-                    type="role"
-                    required
-                    className="form-control"
+              type="role"
+              required
+              className="form-control"
               name="role"
-                    onChange={this.handlechange}
-                    value={this.state.role}
+              onChange={this.handlechange}
+              value={this.state.role}
             >
-            <option value="" disabled className="text-hide">
-                      Please select
-            </option>
-            <option value="0">User</option>
-            <option value="1">Seller</option>
+              <option value="" disabled className="text-hide">
+                Please select
+              </option>
+              <option value="0">User</option>
+              <option value="1">Seller</option>
             </select>
           </div>
-
         </div>
-        <button type="submit" className="btn btn-primary mt-2" >
+        <button type="submit" className="btn btn-primary mt-2">
           Sign In
         </button>
       </form>
@@ -130,13 +130,12 @@ class Signin extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
-       passtoken: data => {
-         dispatch(Passtoken(data));
-       }
-  }
-}
- 
-export default connect(null,mapDispatchToProps)(withRouter(Signin));
+    passtoken: (data) => {
+      dispatch(Passtoken(data));
+    },
+  };
+};
 
+export default connect(null, mapDispatchToProps)(withRouter(Signin));

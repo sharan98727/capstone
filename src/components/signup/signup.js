@@ -35,7 +35,7 @@ class Signup extends React.Component {
         }
         if (data.message) {
           console.log("SignIn");
-          this.props.history.push('/SignIn');
+          this.props.history.push("/SignIn");
         } else {
           const error = new Error(data.error);
           throw error;
@@ -49,7 +49,11 @@ class Signup extends React.Component {
 
   render() {
     return (
-      <form className="demoForm" onSubmit={this.handlesubmit} style={{margin:"auto",width:"500px"}}>
+      <form
+        className="demoForm"
+        onSubmit={this.handlesubmit}
+        style={{ margin: "auto", width: "500px" }}
+      >
         <h2>Signup Here</h2>
         <div className="panel panel-default mt-4"></div>
 
@@ -92,23 +96,22 @@ class Signup extends React.Component {
           </div>
 
           <div className="panel panel-default">
-          <label htmlFor="password">Select the Role</label>
+            <label htmlFor="password">Select the Role</label>
             <select
-                    type="role"
-                    required
-                    className="form-control"
+              type="role"
+              required
+              className="form-control"
               name="role"
-                    onChange={this.handlechange}
-                    value={this.state.role}
+              onChange={this.handlechange}
+              value={this.state.role}
             >
-            <option value="" disabled className="text-hide">
-                      Please select
-            </option>
-            <option value="0">User</option>
-            <option value="1">Seller</option>
+              <option value="" disabled className="text-hide">
+                Please select
+              </option>
+              <option value="0">User</option>
+              <option value="1">Seller</option>
             </select>
           </div>
-          
         </div>
         <button type="submit" className="btn btn-primary mt-2">
           Sign Up
