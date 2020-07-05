@@ -90,6 +90,25 @@ class Signup extends React.Component {
               onChange={this.handlechange}
             />
           </div>
+
+          <div className="panel panel-default">
+          <label htmlFor="password">Select the Role</label>
+            <select
+                    type="role"
+                    required
+                    className="form-control"
+              name="role"
+                    onChange={this.handlechange}
+                    value={this.state.role}
+            >
+            <option value="" disabled className="text-hide">
+                      Please select
+            </option>
+            <option value="0">User</option>
+            <option value="1">Seller</option>
+            </select>
+          </div>
+          
         </div>
         <button type="submit" className="btn btn-primary mt-2">
           Sign Up
