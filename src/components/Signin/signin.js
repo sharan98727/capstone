@@ -53,6 +53,13 @@ class Signin extends React.Component {
           })
 
         } 
+        if(data.seller) {
+          this.authenticate(data,() => {
+            //          console.log("SignIn");
+                      this.props.history.push('/seller');
+                    })
+
+        }
         // else {
         //   const error = new Error(data.error);
         //   throw error;

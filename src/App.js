@@ -2,7 +2,7 @@ import React from "react";
 //import "./styles.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Navigation from "./components/navigation/navigationbar";
-import Footer from "./components/navigation/footer";
+//import Footer from "./components/navigation/footer";
 import Signin from "./components/Signin/signin";
 import Home from "./components/Home/home";
 //import Appliance from "./components/appliances/appliances";
@@ -14,6 +14,7 @@ import Searchshow from "./components/searchshow/searchshow"
 import { connect } from "react-redux";
 import Signup from "./components/signup/signup";
 import Profile from "./components/profile/profile";
+import Seller from "./components/seller/seller";
 // import Signout from "./components/signout/signout";
 
 class  App extends React.Component {
@@ -44,12 +45,15 @@ class  App extends React.Component {
         <Route path="/profile">
           <Profile />
         </Route>
+        <Route path="/seller">
+          <Seller/>
+        </Route>
+
         <Route path="/">
           <Home />
         </Route>
       </Switch>
- <hr />
-      <Footer />
+
     </BrowserRouter>
   );
 }

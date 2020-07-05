@@ -15,7 +15,7 @@ class Appcontainer extends React.Component {
             <div>
                 <Appliance type="air conditioner" />
             </div>
-
+          
         </div>
         )
     }
