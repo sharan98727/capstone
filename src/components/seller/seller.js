@@ -1,4 +1,7 @@
 import React from "react";
+import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import { Passsellerproduct } from "../reducers/actions";
 
 class Seller extends React.Component {
   state = {
@@ -37,7 +40,7 @@ class Seller extends React.Component {
 
   handlesubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+  //  console.log(this.state);
     if (this.state.image === "") {
       alert("Wait till Image is Uploading");
     } else {
@@ -51,6 +54,8 @@ class Seller extends React.Component {
         .then((res) => res.json())
         .then((data) => console.log(data))
         .catch((err) => console.log(err));
+        this.props.Passproduct(this.state);
+        this.props.history.push('/appliances');
     }
   };
 
@@ -121,4 +126,14 @@ class Seller extends React.Component {
   }
 }
 
-export default Seller;
+const mapDispatchToProps = dispatch => {
+  
+  return {
+    Passproduct:data => {
+      dispatch(Passsellerproduct(data));
+      console.log(data);
+    }
+  }
+}
+
+export default connect(null,mapDispatchToProps)(withRouter(Seller));

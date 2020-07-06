@@ -23,5 +23,12 @@ export const Passtoken = token => ({
       payload:token
 })
 
+export const Passsellerproduct = data => ({
+
+      type:"GET_SELLER_PRODUCT",
+      payload:data
+
+})
+
 
 

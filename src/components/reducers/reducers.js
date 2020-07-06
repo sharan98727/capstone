@@ -3,6 +3,7 @@ const initstate = {
     cartdata: [],
     searchvalue:'',
     token:'',
+    SellerProductName:'',
 }
 
 const cartreducer = (state=initstate,action) => {
@@ -43,6 +44,15 @@ const cartreducer = (state=initstate,action) => {
           return{
               ...state,
               token
+          }
+
+        case "GET_SELLER_PRODUCT":
+
+        const SellerProductName = action.payload ;
+        console.log(SellerProductName);
+          return {
+              ...state ,
+              SellerProductName ,
           }
 
 

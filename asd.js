@@ -99,3 +99,7 @@ class Navigation extends React.Component {
   }
 }
 export default Navigation;
+
+// {/* <CardDeck style={{marginLeft:"130px",width:"80%"}} >
+// {image}
+// </CardDeck> */}
