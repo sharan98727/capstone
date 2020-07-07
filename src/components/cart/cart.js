@@ -19,11 +19,11 @@ handleremove = (item) => {
         return(
             <Card style={{ width: '18rem' }}>
 
-                   <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />  
+                   <Card.Img variant="top" src={item.image} width="200px" height="200px" />  
                    <ListGroup className="list-group-flush">
-                      <ListGroupItem>{item.alt_description}</ListGroupItem>
-                      <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
-                      <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
+                      <ListGroupItem>{item.name}</ListGroupItem>
+                      <ListGroupItem>Rs{item.price}/week</ListGroupItem>
+                      <ListGroupItem>Delivery in {item.delivery}min</ListGroupItem>
                       <button onClick = {()=>{this.handleclick({item})}} >Proceed to payment</button>
                       <button onClick ={()=>{this.handleremove({item})}} >Remove from cart </button>
                     </ListGroup>               

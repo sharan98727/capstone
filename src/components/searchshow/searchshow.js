@@ -12,15 +12,31 @@ class Searchshow extends React.Component {
 
     componentDidMount(){
         
-        fetch(`https://api.unsplash.com/search/photos/?client_id=x00KRDCTU-TSnOwMefUykvB47JTFRXXnQoZN6wSjH9Q&query=${this.props.value}`)
+        fetch(`/home/${this.props.value}`)
             .then(response => response.json())
             .then(data => {
+              console.log(data)
                  this.setState({
-                     itemshow:data.results
+                     itemshow:data,
                  });
+                 console.log(this.state.itemshow)
             })
 
     }
+
+    componentDidUpdate(){
+        
+      fetch(`/home/${this.props.value}`)
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+               this.setState({
+                   itemshow:data,
+               });
+               console.log(this.state.itemshow)
+          })
+
+  }
 
 
     handleclick = (item) => {
@@ -42,11 +58,11 @@ class Searchshow extends React.Component {
     const items =  this.state.itemshow.map(item => {
         return(
             <Card style={{ width: '18rem' }} key={item.id}>
-            <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />
+            <Card.Img variant="top" src={item.image} width="200px" height="200px" />
             <ListGroup className="list-group-flush">
-               <ListGroupItem>{item.alt_description}</ListGroupItem>
-               <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
-               <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
+               <ListGroupItem>{item.price}</ListGroupItem>
+               <ListGroupItem>Rs{item.delivery}/week</ListGroupItem>
+               <ListGroupItem>Delivery in {item.delivery}min</ListGroupItem>
                <button onClick = {()=>{this.handleclick({item})}} >Add to Cart</button>
              </ListGroup>
              

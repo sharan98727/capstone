@@ -11,7 +11,7 @@ class Navigation extends React.Component {
   
   render() {
     let message;
-    if (this.props.tokenvalue) {
+    if (localStorage.getItem('jwt')) {
       message = (
         <Fragment>         
           <Link className="navbar-brand ml-4" to="/profile">
@@ -78,6 +78,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = dispatch => {
+  console.log('hiii');
   return{
       passtoken: () => {
         dispatch(Passtoken(""));

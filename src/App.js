@@ -5,8 +5,8 @@ import Navigation from "./components/navigation/navigationbar";
 //import Footer from "./components/navigation/footer";
 import Signin from "./components/Signin/signin";
 import Home from "./components/Home/home";
-//import Appliance from "./components/appliances/appliances";
-import Appcontainer from "./components/appliances/appliancecontainer";
+import Appliance from "./components/appliances/appliances";
+//import Appcontainer from "./components/appliances/appliancecontainer";
 import Housemaid from "./components/housemaids/housemaid";
 import Cart from "./components/cart/cart"
 //import Search from "./components/navigation/searchbar";
@@ -31,7 +31,7 @@ class  App extends React.Component {
           <Signup/>
         </Route>
         <Route path="/appliances">
-          <Appcontainer />
+          <Appliance />
         </Route>
         <Route path="/housemaid">
           <Housemaid />

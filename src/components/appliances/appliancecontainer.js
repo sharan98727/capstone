@@ -46,13 +46,13 @@ class Appcontainer extends React.Component {
         return(
         <div>
             <div>
-                <Appliance type="washing machine" />
+                <Appliance  />
             </div>
             <div>
-                <Appliance type="ovens" />
+                <Appliance  />
             </div>
             <div>
-                <Appliance type="air conditioner" />
+                <Appliance />
             </div>
             <div style={{margin:"30px",display:"flex"}}>
                 {seller}
