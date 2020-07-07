@@ -42,7 +42,7 @@ class Searchshow extends React.Component {
     handleclick = (item) => {
         this.props.displayname(item);
   
-        if(this.props.tokenvalue) {
+        if(localStorage.getItem('jwt')) {
           this.props.history.push('/cart');
         } 
         else {
@@ -60,8 +60,8 @@ class Searchshow extends React.Component {
             <Card style={{ width: '18rem' }} key={item.id}>
             <Card.Img variant="top" src={item.image} width="200px" height="200px" />
             <ListGroup className="list-group-flush">
-               <ListGroupItem>{item.price}</ListGroupItem>
-               <ListGroupItem>Rs{item.delivery}/week</ListGroupItem>
+               <ListGroupItem>{item.name}</ListGroupItem>
+               <ListGroupItem>Rs{item.price}/week</ListGroupItem>
                <ListGroupItem>Delivery in {item.delivery}min</ListGroupItem>
                <button onClick = {()=>{this.handleclick({item})}} >Add to Cart</button>
              </ListGroup>
@@ -72,7 +72,7 @@ class Searchshow extends React.Component {
         })
 
         return(
-            <CardColumns style={{margin:"20px"}}>
+            <CardColumns style={{marginLeft:"90px",marginTop:"20px"}}>
             {items}
          </CardColumns>
         )

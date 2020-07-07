@@ -18,11 +18,11 @@ const cartreducer = (state=initstate,action) => {
             }
 
         case "REMOVE_FROM_CART": 
-          console.log(action.payload.item.alt_description);
-          console.log(state.cartdata.alt_description);
+          console.log(action.payload.item.name);
+         // console.log(state.cartdata.alt_description);
           return{
               ...state,
-              cartdata:[...state.cartdata.filter(item => item.alt_description !== action.payload.item.alt_description)]
+              cartdata:[...state.cartdata.filter(item => item.name !== action.payload.item.name)]
               
           }
           

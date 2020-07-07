@@ -8,6 +8,7 @@ class Cart extends React.Component {
 
 
 handleremove = (item) => {
+  //  console.log(item);
     this.props.remove(item);
    // this.props.history.push('/cart');
 }
@@ -56,6 +57,7 @@ const mapStateToProps = state =>{
 const mapDispatchToProps = dispatch => {
     return{
         remove: item => {
+            console.log(item);
             dispatch(Remove(item));
         }
     }

@@ -33,7 +33,7 @@ class Appliance extends React.Component {
         
         this.props.displayname(item);
 
-        if(this.props.tokenvalue) {
+        if(localStorage.getItem('jwt')) {
           this.props.history.push('/cart');
         } 
         else {
@@ -62,7 +62,7 @@ class Appliance extends React.Component {
     });
     
     return(
-      <CardColumns style={{margin:"30px"}}>
+      <CardColumns style={{marginLeft:"90px",marginTop:"20px"}}>
       {items}
    </CardColumns>
     )       
