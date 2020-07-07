@@ -30,5 +30,17 @@ export const Passsellerproduct = data => ({
 
 })
 
+export const totalcost = item => ({
+
+      type:"TOTAL_COST",
+      payload:item ,
+})
+
+export const subtractprice = item => ({
+
+      type:"SUBTRACT_PRICE",
+      payload:item ,
+})
+
 
 

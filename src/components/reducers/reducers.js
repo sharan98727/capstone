@@ -4,6 +4,7 @@ const initstate = {
     searchvalue:'',
     token:'',
     SellerProductName:'',
+    price:0
 }
 
 const cartreducer = (state=initstate,action) => {
@@ -11,6 +12,7 @@ const cartreducer = (state=initstate,action) => {
     switch(action.type){
 
         case "SHOW_CART_ITEMS":
+            
           const cartdata = [...state.cartdata,action.payload.item];
             return {
                 ...state,
@@ -55,6 +57,20 @@ const cartreducer = (state=initstate,action) => {
               SellerProductName ,
           }
 
+        case "TOTAL_COST" : 
+       const price = state.price +  action.payload ;
+       console.log(price);
+        return{
+            ...state ,
+            price
+        }
+
+        case "SUBTRACT_PRICE" : 
+        
+        return {
+            ...state , 
+            price : state.price - action.payload
+        }
 
         default :
         {

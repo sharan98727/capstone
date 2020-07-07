@@ -4,6 +4,7 @@ import {  Card, ListGroup,ListGroupItem, CardColumns } from "react-bootstrap";
 import { connect } from "react-redux";
 import { display } from "../reducers/actions";
 import { withRouter } from 'react-router';
+import {totalcost} from "../reducers/actions";
 
 class Appliance extends React.Component {
   constructor(props){
@@ -32,7 +33,8 @@ class Appliance extends React.Component {
       handleclick = (item) => {
         
         this.props.displayname(item);
-
+        this.props.totalcost(item);
+        // console.log(item.price);
         if(localStorage.getItem('jwt')) {
           this.props.history.push('/cart');
         } 
@@ -73,7 +75,13 @@ const mapDispatchToProps = dispatch =>{
   return{
        displayname: item => {
          dispatch(display(item));
+       } ,
+
+       totalcost: item => {
+         dispatch(totalcost(item.item.price));
+         console.log(item.item.price);
        }
+
   }
 }
 

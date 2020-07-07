@@ -10,7 +10,7 @@ class Profile extends React.Component {
 
     render(){
         return(
-        <h1>hiiii {this.state.x}</h1>
+        <h1 style={{textAlign:"center",justifyContent:"center"}}>hiiii {this.state.x}</h1>
         )
     }
 
