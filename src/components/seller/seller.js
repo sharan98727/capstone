@@ -33,7 +33,7 @@ class Seller extends React.Component {
       .then((res) => res.json())
       .then((data) => {
         this.state.image = data.url;
-        console.log(data);
+        console.log(data);//not useful for passing data
       })
       .catch((err) => console.log(err));
   };
@@ -129,6 +129,7 @@ class Seller extends React.Component {
 const mapDispatchToProps = dispatch => {
   
   return {
+    
     Passproduct:data => {
       dispatch(Passsellerproduct(data));
       console.log(data);

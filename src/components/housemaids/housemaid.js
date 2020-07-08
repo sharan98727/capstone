@@ -40,13 +40,13 @@ class Housemaid extends React.Component{
     
       const items = this.state.maidimages.map(item => {
       return(
-          <Card style={{ width: '18rem' }} key={item.id}>
+          <Card style={{ width: '18rem' ,marginBottom:"40px"}} key={item.id}>
           <Card.Img variant="top" src={item.image} width="200px" height="200px" />
           <ListGroup className="list-group-flush">
              <ListGroupItem>{item.name}</ListGroupItem>
              <ListGroupItem>Rs{item.price}/week</ListGroupItem>
              <ListGroupItem>Available time : {item.delivery}</ListGroupItem>
-             <button onClick = {()=>this.handleclick({item})} >Add to Cart</button>
+             <button type="button" class="btn btn-primary" onClick = {()=>this.handleclick({item})} >Add to Cart</button>
            </ListGroup>
            
      </Card>
@@ -55,9 +55,9 @@ class Housemaid extends React.Component{
     
     return(
          
-      <CardColumns style={{margin:"20px"}}>
-         {items}
-      </CardColumns>
+      <CardColumns style={{marginLeft:"90px",marginTop:"20px"}}>
+      {items}
+   </CardColumns>
     )
     }
 

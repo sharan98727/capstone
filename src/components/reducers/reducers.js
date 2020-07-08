@@ -3,8 +3,9 @@ const initstate = {
     cartdata: [],
     searchvalue:'',
     token:'',
-    SellerProductName:'',
-    price:0
+    SellerProductName:[],
+    price:0,
+    sellercart:[],
 }
 
 const cartreducer = (state=initstate,action) => {
@@ -71,6 +72,8 @@ const cartreducer = (state=initstate,action) => {
             ...state , 
             price : state.price - action.payload
         }
+
+        
 
         default :
         {

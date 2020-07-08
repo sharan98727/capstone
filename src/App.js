@@ -17,6 +17,7 @@ import Profile from "./components/profile/profile";
 import Seller from "./components/seller/seller";
 // import Signout from "./components/signout/signout";
 import Maid from "./components/seller/maid";
+import Sellercart from "./components/cart/sellercart";
 
 class  App extends React.Component {
 
@@ -37,9 +38,20 @@ class  App extends React.Component {
         <Route path="/housemaid">
           <Housemaid />
         </Route>
-        <Route path="/cart">
-          <Cart/>
-        </Route>
+        <Route path="/cart" render = {(props) => {
+          if(JSON.parse(localStorage.getItem('jwt')).user){
+            return(
+              <Cart/>
+            )          
+          }
+          else {
+            return(
+              <Sellercart/>
+            )
+          }
+        }}/>
+          
+      
         <Route path={`/search/${this.props.value}`}>
           <Searchshow/>
         </Route>
