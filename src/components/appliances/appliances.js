@@ -48,7 +48,7 @@ class Appliance extends React.Component {
     const items = this.state.appliancecards.map(item => {
       return (
       
-        <Card style={{ width: '18rem' }} key={item.id}>
+        <Card style={{ width: '18rem',marginBottom:"40px" }} key={item.id}>
              <Card.Img variant="top" src={item.image} width="200px" height="200px" />
              <ListGroup className="list-group-flush">
                 <ListGroupItem>{item.description}</ListGroupItem>
