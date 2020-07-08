@@ -28,19 +28,19 @@ class Searchshow extends React.Component {
 
     }
 
-    componentDidUpdate(){
+  //   componentDidUpdate(){
         
-      fetch(`/home/${this.props.value}`)
-          .then(response => response.json())
-          .then(data => {
-            console.log(data)
-               this.setState({
-                   itemshow:data,
-               });
-               console.log(this.state.itemshow)
-          })
+  //     fetch(`/home/${this.props.value}`)
+  //         .then(response => response.json())
+  //         .then(data => {
+  //           console.log(data)
+  //              this.setState({
+  //                  itemshow:data,
+  //              });
+  //              console.log(this.state.itemshow)
+  //         })
 
-  }
+  // }
 
 
     handleclick = (item) => {

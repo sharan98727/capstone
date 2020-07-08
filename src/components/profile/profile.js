@@ -1,7 +1,7 @@
 import React from "react";
 //import { connect } from "react-redux";
 import { withRouter, Link, } from "react-router-dom";
-import { Button } from "react-bootstrap";
+import { Button, Card } from "react-bootstrap";
 
 class Profile extends React.Component {
 
@@ -9,7 +9,9 @@ class Profile extends React.Component {
        x : '',
       // y:  JSON.parse(localStorage.getItem('jwt')).seller.name
       y: JSON.parse(localStorage.getItem('jwt')),
-      z:''
+      z:'',
+      w:'https://www.pngitem.com/pimgs/m/146-1468479_my-profile-icon-blank-profile-picture-circle-hd.png'
+      
   }
 componentDidMount(){
 
@@ -46,7 +48,10 @@ componentDidMount(){
      
         return(
        <div style={{textAlign:"center"}}> 
-        <h1 style={{}}>hiiii {this.state.x}</h1>
+         <Card style={{ width: '10rem',marginBottom:"40px" ,marginLeft:"580px",marginTop:"70px"}}>
+          <Card.Img variant="top" src={this.state.w} width="150px" height="150px" />
+           </Card> 
+        <h1 style={{}}>Hiiii {this.state.x}</h1>
         <h2>{this.state.z}
         {/* <Link className="navbar-brand ml-4" to="/seller">
               upload

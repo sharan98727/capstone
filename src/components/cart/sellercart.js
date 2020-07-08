@@ -12,13 +12,17 @@ class Sellercart extends React.Component {
 
 
     componentDidMount(){
+        console.log(this.props.SellerProduct);
+        if(this.props.SellerProduct.name){
        this.setState({
            userdata:[this.props.SellerProduct],
            
        })
        console.log(this.state.userdata);
+    }
 
         }
+    
 
     render() {
         const seller = this.state.userdata.map(item => {
@@ -38,7 +42,7 @@ class Sellercart extends React.Component {
 
         return(
         <div> 
-            {/* <h1>you have given {this.state.userdata.length} appliances for rent</h1>    */}
+            <h1 style={{textAlign:"center"}}>you have given these appliances for rent</h1>   
             <div style={{margin:"30px",display:"flex"}}>
                 {seller}
             </div>

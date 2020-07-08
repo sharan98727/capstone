@@ -7,12 +7,14 @@ class Search extends React.Component {
 
    state={
      value:"",
-     isloggedin:false,
+     
    }
 
    handlechange= (e) => {
      this.setState({
        value:e.target.value,
+       isloggedin:false,
+       
      })
    }
 
@@ -24,6 +26,7 @@ class Search extends React.Component {
     console.log(this.state.value);
     console.log({value});       
      this.setState({
+       isloggedin:true,
        value:'',
      })
      this.props.history.push(`/search/${value}`);
