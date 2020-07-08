@@ -3,11 +3,13 @@ import { connect } from "react-redux";
 import { Card, ListGroup ,ListGroupItem ,CardColumns } from "react-bootstrap";
 import { withRouter } from "react-router-dom";
 import { display } from "../reducers/actions";
+import {totalcost} from "../reducers/actions";
 
 class Searchshow extends React.Component {
 
     state={
-        itemshow:[]
+        itemshow:[],
+        number:0,
     }
 
     componentDidMount(){
@@ -15,9 +17,11 @@ class Searchshow extends React.Component {
         fetch(`/home/${this.props.value}`)
             .then(response => response.json())
             .then(data => {
-              console.log(data)
+              console.log(data.length);
                  this.setState({
                      itemshow:data,
+                     number:data.length,
+
                  });
                  console.log(this.state.itemshow)
             })
@@ -41,6 +45,7 @@ class Searchshow extends React.Component {
 
     handleclick = (item) => {
         this.props.displayname(item);
+        this.props.totalcost(item);
   
         if(localStorage.getItem('jwt')) {
           this.props.history.push('/cart');
@@ -72,9 +77,13 @@ class Searchshow extends React.Component {
         })
 
         return(
+          <div>
+            <h1 style={{marginTop:"10px" ,textAlign:"center"}}>You have {this.state.number} items for your search</h1>
             <CardColumns style={{marginLeft:"90px",marginTop:"20px"}}>
+              
             {items}
          </CardColumns>
+         </div>
         )
     }
 
@@ -94,7 +103,11 @@ const mapDispatchToProps = dispatch =>{
     return{
          displayname: (item) => {
            dispatch(display(item));
-         }
+         },
+         totalcost: item => {
+          dispatch(totalcost(item.item.price));
+          console.log(item.item.price);
+        }
     }
   }
 

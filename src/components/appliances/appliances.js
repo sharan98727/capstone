@@ -11,7 +11,6 @@ class Appliance extends React.Component {
       super(props)
        this.state = {
         appliancecards:[],
-        isloggedin:false,
         name:props.type,
     }
   }
@@ -52,10 +51,10 @@ class Appliance extends React.Component {
         <Card style={{ width: '18rem' }} key={item.id}>
              <Card.Img variant="top" src={item.image} width="200px" height="200px" />
              <ListGroup className="list-group-flush">
-                <ListGroupItem>{item.name}</ListGroupItem>
+                <ListGroupItem>{item.description}</ListGroupItem>
                 <ListGroupItem>Rs{item.price}/week</ListGroupItem>
                 <ListGroupItem>Delivery in {item.delivery}min</ListGroupItem>
-                <button onClick = {()=>{this.handleclick({item})}} >Add to Cart</button>
+                <button type="button" class="btn btn-primary" onClick = {()=>{this.handleclick({item})}} >Add to Cart</button>
               </ListGroup>
               
         </Card>
