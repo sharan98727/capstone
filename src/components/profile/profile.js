@@ -5,11 +5,14 @@ import { withRouter } from "react-router-dom";
 class Profile extends React.Component {
 
   state = {
-       x : JSON.parse(localStorage.getItem('jwt')).user.name
+       x : JSON.parse(localStorage.getItem('jwt')).user.name,
+       y:  JSON.parse(localStorage.getItem('jwt')).seller.name
   }
+  
 
     render(){
         return(
+        
         <h1 style={{textAlign:"center",justifyContent:"center"}}>hiiii {this.state.x}</h1>
         )
     }

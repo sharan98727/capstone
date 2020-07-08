@@ -114,3 +114,29 @@ export default Navigation;
 //   availability:""
 // }
 // ]
+
+
+render(){
+    
+  const items = this.state.maidimages.map(item => {
+  return(
+      <Card style={{ width: '18rem' }} key={item.id}>
+      <Card.Img variant="top" src={item.urls.small} width="200px" height="200px" />
+      <ListGroup className="list-group-flush">
+         <ListGroupItem>{item.alt_description}</ListGroupItem>
+         <ListGroupItem>Rs{item.likes}/week</ListGroupItem>
+         <ListGroupItem>Delivery in {item.user.total_photos}min</ListGroupItem>
+         <button onClick = {()=>this.handleclick({item})} >Add to Cart</button>
+       </ListGroup>
+       
+ </Card>
+  )
+})
+
+return(
+     
+  <CardColumns style={{margin:"20px"}}>
+     {items}
+  </CardColumns>
+)
+}
