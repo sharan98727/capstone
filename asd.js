@@ -103,3 +103,14 @@ export default Navigation;
 // {/* <CardDeck style={{marginLeft:"130px",width:"80%"}} >
 // {image}
 // </CardDeck> */}
+
+
+// let array = [
+//   {
+//   url:"",
+//   name:"",
+//   description:"",
+//   price:"",
+//   availability:""
+// }
+// ]

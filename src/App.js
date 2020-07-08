@@ -16,6 +16,7 @@ import Signup from "./components/signup/signup";
 import Profile from "./components/profile/profile";
 import Seller from "./components/seller/seller";
 // import Signout from "./components/signout/signout";
+import Maid from "./components/seller/maid";
 
 class  App extends React.Component {
 
@@ -47,6 +48,9 @@ class  App extends React.Component {
         </Route>
         <Route path="/seller">
           <Seller/>
+        </Route>
+        <Route path="/maid">
+          <Maid />
         </Route>
 
         <Route path="/">
