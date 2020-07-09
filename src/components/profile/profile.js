@@ -48,10 +48,11 @@ componentDidMount(){
      
         return(
        <div style={{textAlign:"center"}}> 
-         <Card style={{ width: '10rem',marginBottom:"40px" ,marginLeft:"580px",marginTop:"70px"}}>
+
+         <h1 style={{}}>Hiiii {this.state.x}</h1>
+         <Card style={{ width: '10rem',marginBottom:"40px" ,marginLeft:"580px",marginTop:"30px"}}>
           <Card.Img variant="top" src={this.state.w} width="150px" height="150px" />
            </Card> 
-        <h1 style={{}}>Hiiii {this.state.x}</h1>
         <h2>{this.state.z}
         {/* <Link className="navbar-brand ml-4" to="/seller">
               upload
