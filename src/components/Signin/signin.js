@@ -74,12 +74,12 @@ class Signin extends React.Component {
       <form
         className="demoForm"
         onSubmit={this.handlesubmit}
-        style={{ margin: "auto", width: "500px" }}
+        style={{ margin: "auto", width: "300px" }}
       >
-        <h2>Signin Here</h2>
+        <h1 style={{textAlign:"center",margin:"15px"}}>Signin Here</h1>
         <div className="panel panel-default mt-4"></div>
 
-        <div className="panel panel-default">
+        <div className="panel panel-default" style={{margin:"10px"}} >
           <label htmlFor="email">Enter your Email</label>
           <input
             type="email"
@@ -89,10 +89,11 @@ class Signin extends React.Component {
             placeholder="Email"
             value={this.state.email}
             onChange={this.handlechange}
+            
           />
          </div>
 
-          <div className="panel panel-default">
+          <div className="panel panel-default" style={{margin:"10px"}}>
             <label htmlFor="password">Enter your Password</label>
             <input
               type="password"
@@ -105,7 +106,7 @@ class Signin extends React.Component {
             />
           </div>
 
-          <div className="panel panel-default">
+          <div className="panel panel-default" style={{margin:"10px"}}>
             <label htmlFor="password">Select the Role</label>
             <select
               type="role"
@@ -116,17 +117,18 @@ class Signin extends React.Component {
               value={this.state.role}
             >
             
-              <option value="" disabled className="text-hide">
+              <option value="" disabled className="text-hide" style={{margin:"10px"}}>
                 Please select
               </option>
               <option value="0">User</option>
               <option value="1">Seller</option>
             </select>
           </div>
-      
-        <button type="submit" className="btn btn-primary mt-2">
+      <div style={{textAlign:"center",marginTop:"30px"}}>
+        <button type="submit" className="btn btn-primary mt-2" style={{margin:"20px",textAlign:"center",width:"110px"}}>
           Sign In
         </button>
+        </div>
       </form>
     );
   }

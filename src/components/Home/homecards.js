@@ -15,7 +15,7 @@ class Homecards extends React.Component {
       {
         url:
           "https://images.unsplash.com/photo-1578593195423-df7df9563457?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=336&q=80",
-        description: "housemaids"
+        description: "Housemaids"
       },
       {
         url:

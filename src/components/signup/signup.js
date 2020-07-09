@@ -50,15 +50,16 @@ class Signup extends React.Component {
 
   render() {
     return (
+  
       <form
         className="demoForm"
         onSubmit={this.handlesubmit}
-        style={{ margin: "auto", width: "500px" }}
+        style={{ margin: "auto", width: "400px" }}
       >
-        <h2>Signup Here</h2>
+        <h1 style={{textAlign:"center",margin:"15px"}}>Signup Here</h1>
         <div className="panel panel-default mt-4"></div>
 
-        <div className="panel panel-default">
+        <div className="panel panel-default" style={{margin:"10px"}}>
           <label htmlFor="name">Enter your Username</label>
           <input
             type="name"
@@ -71,7 +72,7 @@ class Signup extends React.Component {
           />
         </div>
 
-        <div className="panel panel-default">
+        <div className="panel panel-default" style={{margin:"10px"}}>
           <label htmlFor="email">Enter your Email</label>
           <input
             type="email"
@@ -83,8 +84,8 @@ class Signup extends React.Component {
             onChange={this.handlechange}
           />
 
-          <div className="panel panel-default">
-            <label htmlFor="password">Enter your Password</label>
+          <div className="panel panel-default" style={{margin:"10px"}}>
+            <label htmlFor="password" style={{marginLeft:"-5px"}}>Enter your Password</label>
             <input
               type="password"
               required
@@ -93,11 +94,12 @@ class Signup extends React.Component {
               placeholder="password"
               value={this.state.password}
               onChange={this.handlechange}
+              style={{marginLeft:"-10px",width: "380px"}}
             />
           </div>
 
-          <div className="panel panel-default">
-            <label htmlFor="password">Select the Role</label>
+          <div className="panel panel-default" style={{margin:"10px"}}>
+            <label htmlFor="password" style={{marginLeft:"-5px",}}>Select the Role</label>
             <select
               type="role"
               required
@@ -105,8 +107,9 @@ class Signup extends React.Component {
               name="role"
               onChange={this.handlechange}
               value={this.state.role}
+              style={{marginLeft:"-10px" , width: "380px"}}
             >
-              <option value="" disabled className="text-hide">
+              <option value="" disabled className="text-hide" style={{marginLeft:"-5px"}}>
                 Please select
               </option>
               <option value="0">User</option>
@@ -114,10 +117,13 @@ class Signup extends React.Component {
             </select>
           </div>
         </div>
-        <button type="submit" className="btn btn-primary mt-2">
+        <div style={{textAlign:"center",marginTop:"10px"}}>
+        <button type="submit" className="btn btn-primary mt-4" style={{margin:"20px",textAlign:"center",width:"110px"}}>
           Sign Up
         </button>
+        </div>
       </form>
+    
     );
   }
 }

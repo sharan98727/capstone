@@ -49,7 +49,7 @@ class Navigation extends React.Component {
           <div className="form-inline">
             <h3>
               <span className="badge mx-4 badge-warning">
-                <b>COMPANY</b>
+                <b>Rental</b>
               </span>
             </h3>
             <Link className="navbar-brand ml-4" to="/">
@@ -57,7 +57,7 @@ class Navigation extends React.Component {
             </Link>
             <Search />
             <Link className="navbar-brand ml-4" to="/housemaid">
-              House-Maid
+              Housemaid
             </Link>
             <Link className="navbar-brand ml-4" to="/appliances">
               Appliances
