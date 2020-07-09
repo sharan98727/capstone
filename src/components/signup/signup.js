@@ -7,6 +7,7 @@ class Signup extends React.Component {
     name: "",
     email: "",
     password: "",
+    role:'',
   };
 
   handlechange = (e) => {

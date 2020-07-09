@@ -90,6 +90,7 @@ class Signin extends React.Component {
             value={this.state.email}
             onChange={this.handlechange}
           />
+         </div>
 
           <div className="panel panel-default">
             <label htmlFor="password">Enter your Password</label>
@@ -114,6 +115,7 @@ class Signin extends React.Component {
               onChange={this.handlechange}
               value={this.state.role}
             >
+            
               <option value="" disabled className="text-hide">
                 Please select
               </option>
@@ -121,7 +123,7 @@ class Signin extends React.Component {
               <option value="1">Seller</option>
             </select>
           </div>
-        </div>
+      
         <button type="submit" className="btn btn-primary mt-2">
           Sign In
         </button>
