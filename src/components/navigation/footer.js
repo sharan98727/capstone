@@ -3,15 +3,17 @@ import "./footer.css";
 
 const Footer = () => {
     return(
+
          <div className="main-footer">
+          <div className="text"><h4>Home based appliances </h4></div> 
             <div className="container">
                <div className="row">
 
-                <h4>Home appliances </h4>
+                
                   {/* column1 */}
                   <div className="col-md-3 col-sm-6">
                      
-                     <ul>Large appliances</ul>
+                   
                      <li>Washing machine</li>
                      <li>Refrigerator</li>
                      <li>Air conditioner</li>
@@ -22,7 +24,7 @@ const Footer = () => {
                 {/* column2 */}
                 <div className="col-md-3 col-sm-6">
                    
-                   <ul>Medium appliances</ul>
+                   
                    <li>Oven</li>
                    <li>Table</li>
                    <li>Fan</li>
@@ -33,7 +35,7 @@ const Footer = () => {
                 {/* column3 */}
                 <div className="col-md-3 col-sm-6">
                  
-                   <ul>Small appliances</ul>
+                  
                    <li>Iron box</li>
                    <li>Portable coller</li>
                    <li>Rice cooker</li>
