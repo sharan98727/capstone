@@ -15,9 +15,17 @@ class Cart extends React.Component {
 
 handleremove = (item) => {
     console.log(item);
+
+    this.setState({
+        number:this.props.numbers,
+    })
+    
     this.props.remove(item);
+    console.log(this.props.cartitems);
    // this.props.history.push('/cart');
     this.props.subtractprice(item.item.price);
+    
+    
 }
 
 
@@ -55,7 +63,7 @@ handleremove = (item) => {
             <div className="row">
                 
                 <div className = "col-6 ">
-                <h1 style={{margin:"40px",textAlign:"center"}}>You Have {this.state.number} items in your cart</h1>
+                <h1 style={{margin:"40px",textAlign:"center"}}>You Have {this.props.numbers} items in your cart</h1>
   
                     {Cartitem}
                 </div>
@@ -77,9 +85,10 @@ handleremove = (item) => {
 
 
 const mapStateToProps = state =>{
-    console.log(state);
+    console.log(state.cartdata.length);
     return{
         cartitems: state.cartdata,
+        numbers:state.cartdata.length,
         price:state.price,
     };
 };

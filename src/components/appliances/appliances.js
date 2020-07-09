@@ -31,10 +31,14 @@ class Appliance extends React.Component {
 
       handleclick = (item) => {
         
-        this.props.displayname(item);
-        this.props.totalcost(item);
+        
+       
         // console.log(item.price);
-        if(localStorage.getItem('jwt')) {
+        if(JSON.parse(localStorage.getItem('jwt'))) {
+
+          this.props.displayname(item);
+          this.props.totalcost(item);
+
           this.props.history.push('/cart');
         } 
         else {
